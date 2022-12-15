@@ -200,7 +200,7 @@ app.post(
       const response = completion.data.choices[0].text;
 
       await Models.Requests.findByIdAndUpdate(request._id, {
-        $set: {response, responedAt: new Date()}
+        $set: {response, respondedAt: new Date()}
       })
 
       res.send({
