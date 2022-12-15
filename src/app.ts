@@ -197,8 +197,14 @@ app.post(
         frequency_penalty: 1
       });
 
+      const response = completion.data.choices[0].text;
+
+      await Models.Requests.findById(request._id, {
+        $set: {response, responedAt: new Date()}
+      })
+
       res.send({
-        response: completion.data.choices[0].text
+        response
       });
 
     } catch(e) {
