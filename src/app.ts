@@ -6,15 +6,16 @@ import {Request, Response, NextFunction} from "express"
 import rateLimit from 'express-rate-limit'
 import { Configuration, OpenAIApi } from "openai";
 import * as Prompts from "./prompts";
+import * as Secrets from "./secrets";
 
 
 const app = express();
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
-const port = 3000;
+const port = 8080;
 
-const MONGODB_URL = "mongodb://127.0.0.1:27017/dev";
-const ADMIN_KEY = "e4b50616fc7699de22c1c76aac3501659a3d03c5d947deac37b0befeed4fc359";
+const MONGODB_URL = Secrets.MONGO_URL;
+const ADMIN_KEY = Secrets.ADMIN_KEY;
 const CLIENT_SECRETS = [
   "1bd4f10ce55b4a3f75aa256b10ed7718a" // lotus
 ]
@@ -32,7 +33,7 @@ app.use('/', rateLimit({
 }))
 
 const openai = new OpenAIApi(new Configuration({
-  apiKey: "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",
+  apiKey: Secrets.OPENAI_TOKEN,
 }));
 
 
