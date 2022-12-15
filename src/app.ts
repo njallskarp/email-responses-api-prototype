@@ -199,7 +199,7 @@ app.post(
 
       const response = completion.data.choices[0].text;
 
-      await Models.Requests.findById(request._id, {
+      await Models.Requests.findByIdAndUpdate(request._id, {
         $set: {response, responedAt: new Date()}
       })
 
