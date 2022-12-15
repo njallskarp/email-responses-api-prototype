@@ -190,7 +190,7 @@ app.post(
       const filledPrompt = Prompts.buildPrompt(request.emailBody, company, employee);
 
       const completion = await openai.createCompletion({
-        model: "text-curie-001", // text-davinci-003 or text-curie-001
+        model: "text-davinci-003", // text-davinci-003 or text-curie-001
         prompt: filledPrompt,
         max_tokens: 200,
         temperature: 0.6,
