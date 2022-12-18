@@ -186,7 +186,7 @@ app.post(
 
 
 app.listen(Secrets.PORT, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+  return console.log(`Express is listening at http://localhost:${Secrets.PORT}`);
 });
 
 
