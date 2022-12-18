@@ -17,7 +17,7 @@ const __customerRepresentativePrompt = (email: string, customer: Models.CompanyI
     \t- ${employee.policies.join("\n\t- ")}
     
     You are a ${employee.role} for ${customer.name}. Write a response email to the customer that is ${employee.tone1} and ${employee.tone2}. Use some of ${customer.name}'s policies 
-    and use as few policies as necessary. Your goal with the response is to ${employee.objective}. Write the email in less than 3 sentences.`;
+    and use as few policies as necessary. Your goal with the response is to ${employee.objective}. Write the email in less than 5 sentences.`;
 
 const __customerComplaintManagerPrompt = (email: string, customer: Models.CompanyInterface, employee: Models.EmployeeInterface) => 
     `fooo {} bar {}`;
