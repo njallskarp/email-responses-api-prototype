@@ -23,6 +23,8 @@ if (fs.existsSync(".env")) {
 export const MONGO_URL = process.env["MONGO_URL"];
 export const OPENAI_TOKEN = process.env["OPENAI_TOKEN"];
 export const ADMIN_KEY = process.env['ADMIN_KEY']
+export const PORT = process.env["PORT"];
+
 
 if(!MONGO_URL){
     exitProcess("You need to supply mongo url");
@@ -34,4 +36,8 @@ if(!OPENAI_TOKEN){
 
 if(!ADMIN_KEY){
     exitProcess("You need to submit the admin key secret");
+}
+
+if(!PORT){
+    exitProcess("You need to submit port to listen to");
 }

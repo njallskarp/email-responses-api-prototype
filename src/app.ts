@@ -12,7 +12,6 @@ import * as Secrets from "./secrets";
 const app = express();
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
-const port = 8080;
 
 const MONGODB_URL = Secrets.MONGO_URL;
 const ADMIN_KEY = Secrets.ADMIN_KEY;
@@ -186,7 +185,7 @@ app.post(
 )
 
 
-app.listen(port, () => {
+app.listen(Secrets.PORT, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
 
