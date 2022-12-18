@@ -5,6 +5,7 @@ export const ENVIRONMENT = process.env.NODE_ENV;
 export const isProd = ENVIRONMENT === "production";
 export const isTest = ENVIRONMENT === "test";
 
+
 const exitProcess = (msg: string) => {
 	if (isTest) return;
 	console.log(`FATAL ERROR: ${msg}`);
@@ -13,6 +14,8 @@ const exitProcess = (msg: string) => {
 
 if (fs.existsSync(".env")) {
 	dotenv.config({ path: ".env" });
+} else if (isProd) {
+	console.log("Using HEROKU to supply config variables");
 } else {
 	exitProcess("No .env file supplied");
 }

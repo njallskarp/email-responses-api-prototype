@@ -36,34 +36,6 @@ const openai = new OpenAIApi(new Configuration({
   apiKey: Secrets.OPENAI_TOKEN,
 }));
 
-
-
-
-/**
- * COMPANY:
- * - POST: company (admin)
- * - GET:  company/:id  (admin)
- * 
- * EMPLOYEE:
- * - POST: employee
- * - GET:  employee/:id (admin, user) (gives policies too)
- * - GET:  employee/  (admin, user) -- list of employees for a company
- * 
- * POLICIES:
- * - POST: policies for a single employee (admin)
- * 
- * REQUESTS:
- * - POST: basically sending an email and getting an answer
- * - GET: retreiving all information
- * 
- */
-
-/**
- * TODO:
- * - create requests route
- * 
- */
-
 const requireCompanyId = async (req: Request, res: Response, next: NextFunction) => {
   try {
     if(!req.params.company_id) throw Error("company Id missing");
