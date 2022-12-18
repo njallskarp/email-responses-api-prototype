@@ -7,11 +7,20 @@ import rateLimit from 'express-rate-limit'
 import { Configuration, OpenAIApi } from "openai";
 import * as Prompts from "./prompts";
 import * as Secrets from "./secrets";
+import cors from "cors";
 
 
 const app = express();
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use(
+  cors({
+    credentials: true,
+    origin: [
+      "https://mail.google.com",
+    ],
+  })
+);
 
 const MONGODB_URL = Secrets.MONGO_URL;
 const ADMIN_KEY = Secrets.ADMIN_KEY;
