@@ -18,6 +18,7 @@ app.use(
     credentials: true,
     origin: [
       "https://mail.google.com",
+      "chrome-extension://jebacandhjpooajoackoapapjkahhkil"
     ],
   })
 );
@@ -188,7 +189,6 @@ app.post(
     }
   }
 )
-
 
 app.listen(Secrets.PORT, () => {
   return console.log(`Express is listening at http://localhost:${Secrets.PORT}`);
