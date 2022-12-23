@@ -74,7 +74,7 @@ const requireEmployeeId = async (req: Request, res: Response, next: NextFunction
 
 const requireCompanySecret = async (req: Request, res: Response, next: NextFunction) => {
   const companySecret = req.headers['secret'];
-  if(!CLIENT_SECRETS.includes(companySecret as string)) res.send({
+  if(!CLIENT_SECRETS.includes(companySecret as string)) res.status(400).send({
     message: "You do not have access to this resource"
   });
   else next();
@@ -82,7 +82,7 @@ const requireCompanySecret = async (req: Request, res: Response, next: NextFunct
 
 const requireAdminKey = (req: Request, res: Response, next: NextFunction) => {
   const adminKey = req.headers['admin-key'];
-  if(adminKey != ADMIN_KEY) res.send({
+  if(adminKey != ADMIN_KEY) res.status(400).send({
     message: "You do not have access to this resource"
   });
   else next();
