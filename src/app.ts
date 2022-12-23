@@ -80,7 +80,6 @@ const requireCompanySecret = async (req: Request, res: Response, next: NextFunct
   else next();
 }
 
-
 const requireAdminKey = (req: Request, res: Response, next: NextFunction) => {
   const adminKey = req.headers['admin-key'];
   if(adminKey != ADMIN_KEY) res.send({
@@ -88,7 +87,6 @@ const requireAdminKey = (req: Request, res: Response, next: NextFunction) => {
   });
   else next();
 }
-
 
 app.post("/company", [requireAdminKey], async (req: Request, res: Response) => {
   try {
@@ -100,8 +98,7 @@ app.post("/company", [requireAdminKey], async (req: Request, res: Response) => {
   }
 });
 
-
-app.get("/company/:id", [requireAdminKey], async (req: Request, res: Response) => {
+app.get("/company/:id", [requireCompanySecret], async (req: Request, res: Response) => {
   try {
     const company = await Models.Companies.findById(req.params.id);
     res.status(200).send(company);
@@ -110,7 +107,6 @@ app.get("/company/:id", [requireAdminKey], async (req: Request, res: Response) =
     res.status(404).send({message: `Unable to find company with Id ${req.params.id}`});
   }
 });
-
 
 app.get("/company/", [requireAdminKey], async (req: Request, res: Response) => {
   try {
