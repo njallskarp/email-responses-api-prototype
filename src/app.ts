@@ -18,7 +18,7 @@ app.use(
     credentials: true,
     origin: [
       "https://mail.google.com",
-      "chrome-extension://jebacandhjpooajoackoapapjkahhkil"
+      "chrome-extension://bdlpfigaeoobpclgnlfbimemempnankc"
     ],
   })
 );
