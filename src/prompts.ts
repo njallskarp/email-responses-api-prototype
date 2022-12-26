@@ -20,7 +20,14 @@ const __customerRepresentativePrompt = (email: string, customer: Models.CompanyI
     and use as few policies as necessary. Your goal with the response is to ${employee.objective}. Write the email in less than 5 sentences.`;
 
 const __customerComplaintManagerPrompt = (email: string, customer: Models.CompanyInterface, employee: Models.EmployeeInterface) => 
-    `fooo {} bar {}`;
+    `A customer sent this complaint to ${customer.name}: "${email}".
+    
+    When dealing with complaints, ${customer.name}'s policies are the following:
+    \t- ${employee.policies.join("\n\t- ")}
+
+    You are a ${employee.role} for ${customer.name}. Write an email that addresses the issue which is ${employee.tone1} and ${employee.tone2}. Use some of ${customer.name}'s policies 
+    and use as few policies as necessary. Your goal with the response is to ${employee.objective}`;
+    `;
 
 export const buildPrompt = (email: string, customer: Models.CompanyInterface, employee: Models.EmployeeInterface) => {
     let promptBuildFunc = undefined;
